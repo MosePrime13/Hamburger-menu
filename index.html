@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .hamburger{ height: 36px; }
+        .hamburger span{
+            background: #00112c;
+            border-radius: 2px;
+            display: inline-block;
+            height: 2px;
+            position: relative;
+            transition: .2s ease-in-out;
+            width: 24px;
+        }
+        .hamburger span::before{
+            background: #00112c;
+            border-radius: 2px;
+            content: '';
+            display: inline-block;
+            height: 2px;
+            left: 0;
+            position: absolute;
+            transform-origin: 2px center;
+            transition: .2s ease-in-out;
+            width: 24px;
+            top: 6px;
+        }
+        .hamburger span::after{
+            background: #00112c;
+            border-radius: 2px;
+            content: '';
+            display: inline-block;
+            height: 2px;
+            left: 0;
+            position: absolute;
+            transform-origin: 2px center;
+            transition: .2s ease-in-out;
+            width: 24px;
+            top: -6px;
+        }
+
+        .hamburger.active span{ 
+            background-color: transparent;
+         }
+
+         .hamburger.active span::before{
+            transform: rotate3d(0,0,1,45deg);
+            top: 0;
+            transform-origin: 50% 50%;
+         }
+
+         .hamburger.active span::after{
+            transform: rotate3d(0,0,1,-45deg);
+            top: 0;
+            transform-origin: 50% 50%;
+            width: 24px;
+         }
+    </style>
+</head>
+<body>
+
+    <a class="hamburger" id="hamburger">
+        <span></span>
+    </a>
+    
+    <script>
+        (function(){
+
+            const hamburger = document.getElementById("hamburger");
+
+            hamburger.addEventListener("click", function() {
+                if(this.classList.contains('active')){
+                    this.classList.remove('active');
+                } else {
+                    this.classList.add('active');
+                }
+                
+            })
+
+        })()
+    </script>   
+</body>
+</html>
